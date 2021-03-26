@@ -18,8 +18,9 @@ export default (req, res) => {
       date: "January 2, 2020",
     },
   ];
+  let article;
   for (let i = 0; i < articles.length; i++) {
-    if (articles[i].name === router.query.name) {
+    if (articles[i].name === req.query.name) {
       article = articles[i];
       break;
     }

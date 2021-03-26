@@ -1,12 +1,11 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
-const Article = ({ articles }) => {
-  console.log(articles);
+const Article = ({ article }) => {
   //   const router = useRouter();
-
-  console.log(router);
-  const name = router.query.name;
+  //   console.log(router);
+  //   const name = router.query.name;
 
   //find post
 
@@ -15,26 +14,26 @@ const Article = ({ articles }) => {
   return (
     <div>
       <h1>{article.title}</h1>
-      Hello Article {name}
-      <button></button>
+      <p>{article.date}</p>
+      <p>{article.title}</p>
+      <p>{article.content}</p>
+
+      <Link href="/"> go back</Link>
     </div>
   );
 };
 
-export async function getServerSideProps() {
-  const router = useRouter();
-
-  const name = router.query.name;
+export async function getServerSideProps(context) {
+  const { name } = context.query;
+  //   console.log(name);
   // Fetch data from external API
-  const res = await fetch(
-    `http://localhost:3000/api/article?name${router.query.name}`
-  );
-  const articles = await res.json();
+  const res = await fetch(`http://localhost:3000/api/article?name=${name}`);
+  const article = await res.json();
 
   // Pass data to the page via props
   return {
     props: {
-      articles: articles,
+      article: article,
     },
   };
 }
