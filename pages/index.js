@@ -46,7 +46,7 @@ export default function Home({ articles }) {
 export async function getServerSideProps() {
   console.log(process.env.API_URL);
   // Fetch data from external API
-  const res = await fetch(process.env.API_URL + "/api/articles");
+  const res = await fetch(`${process.env.API_URL}/api/articles`);
   const articles = await res.json();
 
   // Pass data to the page via props

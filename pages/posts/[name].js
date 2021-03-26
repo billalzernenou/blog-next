@@ -28,7 +28,7 @@ export async function getServerSideProps(context) {
   const { name } = context.query;
   //   console.log(name);
   // Fetch data from external API
-  const res = await fetch(process.env.API_URL + `/api/article?name=${name}`);
+  const res = await fetch(`${process.env.API_URL}/api/article?name=${name}`);
   const article = await res.json();
 
   // Pass data to the page via props
