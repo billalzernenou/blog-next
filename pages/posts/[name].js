@@ -16,7 +16,8 @@ const Article = ({ article }) => {
       <h1>{article.title}</h1>
       <p>{article.date}</p>
       <p>{article.title}</p>
-      <p>{article.content}</p>
+      <p className="abc">{article.content}</p>
+      <a href="ksjdfh">qsd</a>
 
       <Link href="/"> go back</Link>
     </div>
